@@ -305,8 +305,6 @@ def merge():
                 dfs[i].at[j, str(k + maxTokens)] = dfsEncoded[k]
 
     df = pd.concat(dfs)
-    df = df.sample(frac=1).reset_index(drop=True)
-    # move bug column to the end
     df = df[[c for c in df if c not in ['bug']] + ['bug']]
     df.to_csv('dist/train_df.csv', index=False)
 
