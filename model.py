@@ -9,6 +9,9 @@ import torch.nn.utils.rnn as rnn_utils
 from torch.utils.data import DataLoader, TensorDataset, Dataset
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import numpy as np
+
+np.random.seed(42)
 
 trainData = pd.read_csv('dist/train_df.csv')
 df_majority = trainData[trainData.bug == 0]
@@ -18,11 +21,11 @@ df_minority = trainData[trainData.bug == 1]
 majority_count = df_majority.shape[0]
 
 # Upsample minority class
-df_minority_upsampled = df_minority.sample(majority_count, replace=True, random_state=42)
+df_minority_upsampled = df_minority.sample(majority_count, replace=True)
 
 # Combine majority class with upsampled minority class
 trainData_balanced = pd.concat([df_majority, df_minority_upsampled], axis=0)
-trainData_balanced = trainData_balanced.sample(frac=1, random_state=42)
+trainData_balanced = trainData_balanced.sample(frac=1)
 trainData_balanced = trainData_balanced.reset_index(drop=True)
 
 bfs_data = trainData_balanced.iloc[:, 0:2600]

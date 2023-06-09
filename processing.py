@@ -264,7 +264,6 @@ def getCammel(camel_version):
         totalBfsSequences.append(bfsSequenceFiltered)
         totalDfsSequences.append(dfsSequenceFiltered)
         totalUniqueTokens.update(bfsSequenceFiltered)
-        print(len(bfsSequenceFiltered))
 
     # token2int = {token: ii for ii, token in enumerate(totalUniqueTokens, 1)}
     # for i in range(len(trainData)):
