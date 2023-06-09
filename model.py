@@ -85,7 +85,7 @@ train_data = TensorDataset(torch.from_numpy(bfs_data.values), torch.from_numpy(d
                            torch.from_numpy(labels_data.values))
 val_data = TensorDataset(torch.from_numpy(bfs_test.values), torch.from_numpy(dfs_test.values),
                          torch.from_numpy(labels_test.values))
-train_loader = DataLoader(train_data, batch_size=120, shuffle=True)
+train_loader = DataLoader(train_data, batch_size=15, shuffle=True)
 model = Net(vocabSize)
 device = torch.device("mps")
 model = model.to(device)
