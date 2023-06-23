@@ -20,6 +20,7 @@ class BILSTM(nn.Module):
         self.bfs_lstm = nn.LSTM(30, 20)
         self.dfs_embedding = nn.Embedding(vocab_size, 30)
         self.dfs_lstm = nn.LSTM(30, 20)
+
         self.fc1 = nn.Linear(40, 60)
         self.relu = nn.ReLU()
         self.fc2 = nn.Linear(60, 1)

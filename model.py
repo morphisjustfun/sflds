@@ -21,6 +21,7 @@ df_minority = trainData[trainData.bug == 1]
 majority_count = df_majority.shape[0]
 
 # Upsample minority class
+# use SMOTE
 df_minority_upsampled = df_minority.sample(majority_count, replace=True)
 
 # Combine majority class with upsampled minority class
@@ -33,6 +34,8 @@ dfs_data = trainData_balanced.iloc[:, 2600:5200]
 labels_data = trainData_balanced['bug']
 vocabSize = bfs_data.max().max() + 1
 
+# oversampling SMOGN, SMOTER, None
+# normalize use Z, min-max, None
 
 bfs_data, bfs_test, dfs_data, dfs_test, labels_data, labels_test = train_test_split(bfs_data, dfs_data, labels_data,
                                                                                     test_size=0.1)

@@ -265,16 +265,6 @@ def getCammel(camel_version):
         totalDfsSequences.append(dfsSequenceFiltered)
         totalUniqueTokens.update(bfsSequenceFiltered)
 
-    # token2int = {token: ii for ii, token in enumerate(totalUniqueTokens, 1)}
-    # for i in range(len(trainData)):
-    #     bfsEncoded = [token2int[token] for token in totalBfsSequences[i]]
-    #     dfsEncoded = [token2int[token] for token in totalDfsSequences[i]]
-    #     print(len(bfsEncoded))
-    #     for j in range(len(bfsEncoded)):
-    #         trainData.at[i, str(j)] = bfsEncoded[j]
-    #     for j in range(len(dfsEncoded)):
-    #         trainData.at[i, str(j + maxTokens)] = dfsEncoded[j]
-
     trainData.drop(['name'], axis=1, inplace=True)
     trainData.fillna(0, inplace=True)
     trainData['bug'] = trainData['bug'].astype(int)
